@@ -23,16 +23,16 @@ export default function sketch(p) {
       isPlaying = props.isPlaying;
 
       if(song) {
-        if (isPlaying && !song.isPlaying()) {
-          song.play();
-        } else if(!isPlaying && song.isPlaying()) {
-          song.pause();
-        }
+        p.togglePlaying(song);
       }
    }
 
     p.togglePlaying = function(song) {
-       isPlaying ? song.play() : song.pause();
+      if(isPlaying && !song.isPlaying()) {
+        song.play();
+      } else if (!isPlaying && song.isPlaying()) {
+        song.pause();
+      }
     }
 
     p.draw =function () {
