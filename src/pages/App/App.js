@@ -10,22 +10,31 @@ class App extends React.Component {
 
         this.state = {
             stateSketch: sketch,
-            volume: 0.5
+            volume: 0.5,
+            isPlaying: false,
+            buttonText: 'Play'
         }
     }
 
-    onVolumeChange = (event) => {
+    onVolumeChange = event => {
         const {name, value} = event.target;
         this.setState({[name]: value});
+    }
+
+    onPlayPress = event => {
+        this.setState({isPlaying: !(this.state.isPlaying)}, () => {
+            this.setState({buttonText: this.state.isPlaying ? 'Pause' : 'Play'})
+        });
     }
 
     render() {
         return (
             <div>
-                <P5Wrapper sketch={this.state.stateSketch} volume={this.state.volume}/>
-                <input type="range" name="volume" value={this.state.volume}  min="0.0"  max="1.0" step="0.1" onChange={this.onVolumeChange}/>
+                <P5Wrapper sketch={this.state.stateSketch} volume={this.state.volume} isPlaying={this.state.isPlaying}/>
+                <button onClick={this.onPlayPress}>{this.state.buttonText}</button>
+                <br/>
                 <label>Volume</label>
-                {/*<button onClick={this.pressEvent.bind(this)}>Change Sketch</button>*/}
+                <input type="range" name="volume" value={this.state.volume}  min="0.0"  max="1.0" step="0.1" onChange={this.onVolumeChange}/>
             </div>
         );
     }
