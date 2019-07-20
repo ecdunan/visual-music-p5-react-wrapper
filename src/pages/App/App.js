@@ -3,6 +3,11 @@ import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import './App.css';
 
+let soundReset = {
+    isPlaying: false,
+    buttonText: 'Play'
+}
+
 class App extends React.Component {
     constructor() {
         super();
@@ -10,8 +15,7 @@ class App extends React.Component {
         this.state = {
             uploadedSong: null,
             volume: 0.5,
-            isPlaying: false,
-            buttonText: 'Play'
+            ...soundReset
         }
     }
 
@@ -46,7 +50,7 @@ class App extends React.Component {
     }
 
     /********************************************
-        Handles file uploads. Uploaded file is saved
+        Handle file uploads. Uploaded file is saved
         as state and is passed down to the sketch file as props.
         Sketch then loads the file using p5.Sound library.
     *********************************************/
@@ -54,20 +58,19 @@ class App extends React.Component {
         const song = event.target.files[0];
 
         if (song.type === 'audio/mp3') {
-            this.setState({uploadedSong: song,
-                isPlaying: false,
-                buttonText: 'Play'});
+            this.setState({uploadedSong: song, ...soundReset});
         }
     }
 
     render() {
-        const { uploadedSong, volume, isPlaying, buttonText } = this.state;
+        const { uploadedSong, volume, isPlaying, buttonText, onSongEnd } = this.state;
         return (
             <div className='visualmusic'>
                 <Visualizer
                     volume = {volume}
                     isPlaying = {isPlaying}
                     uploadedSong = {uploadedSong}
+                    onSongEnd = {onSongEnd}
                 />
                 <SoundPlayer
                     volume = {volume}

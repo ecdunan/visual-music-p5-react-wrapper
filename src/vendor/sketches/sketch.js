@@ -23,6 +23,8 @@ export default function sketch(p) {
         //monitor volume change and toggling of pause/play button
         song.setVolume(parseFloat(volume));
         p.togglePlaying(song);
+
+        //Reinitializes song if a new file is uploaded
         if(song.file !== props.uploadedSong) {
           song.dispose();
           song = p.loadSound(props.uploadedSong);

@@ -2,7 +2,7 @@
     Main component for sound controls.
     Allows user to control the uploaded sound file.
     Current features:
-    1.  Load (1 time loading, page needs to be refreshed on song end)
+    1.  Load sound file
     2.  Play/Pause song
     3.  Change volume
 
