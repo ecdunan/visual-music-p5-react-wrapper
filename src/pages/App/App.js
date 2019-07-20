@@ -51,7 +51,13 @@ class App extends React.Component {
         Sketch then loads the file using p5.Sound library.
     *********************************************/
     onFileUpload = event => {
-        this.setState({uploadedSong: event.target.files[0]});
+        const song = event.target.files[0];
+
+        if (song.type === 'audio/mp3') {
+            this.setState({uploadedSong: song,
+                isPlaying: false,
+                buttonText: 'Play'});
+        }
     }
 
     render() {

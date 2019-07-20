@@ -7,8 +7,7 @@
     3.  Change volume
 
     TODO:
-    1.  Allow users to load a new sound even if there is one currently loaded.
-    2.  Implement slider for the sound file buffer/duration - allow users to control
+    1.  Implement slider for the sound file buffer/duration - allow users to control
         the part of the song to be played.
 ************************************************************/
 
@@ -28,7 +27,10 @@ import './SoundPlayer.styles.css';
 *************************************************************/
 const SoundPlayer = ({ volume, onPlayPress, onVolumeChange, onFileUpload, buttonText }) => (
     <div className='soundplayer'>
-        <input type="file" name="file" onChange={onFileUpload}/>
+        <input type="file"
+            accept=".mp3,audio/*"
+            name="file"
+            onChange={onFileUpload}/>
         <div className='soundplayer-controls'>
             <div>
                 <button className='control-button'
