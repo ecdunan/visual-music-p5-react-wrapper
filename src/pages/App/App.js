@@ -34,9 +34,15 @@ class App extends React.Component {
         command.
     *********************************************/
     onPlayPress = event => {
-        this.setState({isPlaying: !(this.state.isPlaying)}, () => {
-            this.setState({buttonText: this.state.isPlaying ? 'Pause' : 'Play'})
-        });
+        const { uploadedSong } = this.state;
+
+        if (uploadedSong) {
+            this.setState({isPlaying: !(this.state.isPlaying)}, () => {
+                this.setState({buttonText: this.state.isPlaying ? 'Pause' : 'Play'});
+            });
+        } else {
+            alert('No file loaded');
+        }
     }
 
     /********************************************
