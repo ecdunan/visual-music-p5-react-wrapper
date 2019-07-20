@@ -7,3 +7,7 @@
     display: flex;
     flex-flow: row wrap;
 }
+
+.soundplayer-controls div {
+    margin: 0.5rem;
+}

@@ -29,11 +29,21 @@ import './SoundPlayer.styles.css';
 const SoundPlayer = ({ volume, onPlayPress, onVolumeChange, onFileUpload, buttonText }) => (
     <div className='soundplayer'>
         <input type="file" name="file" onChange={onFileUpload}/>
-
         <div className='soundplayer-controls'>
-            <button onClick={onPlayPress}>{buttonText}</button>
-            <label>Volume</label>
-            <input type="range" name="volume" value={volume}  min="0.0"  max="1.0" step="0.1" onChange={onVolumeChange}/>
+            <div>
+                <button onClick={onPlayPress}>{buttonText}</button>
+            </div>
+            <div>
+                <label>Volume</label>
+                <input type="range"
+                    name="volume"
+                    value={volume}
+                    min="0.0"
+                    max="1.0"
+                    step="0.1"
+                    onChange={onVolumeChange}
+                />
+            </div>
         </div>
     </div>
 );
