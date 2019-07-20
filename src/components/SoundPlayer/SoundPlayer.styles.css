@@ -1,0 +1,9 @@
+.soundplayer {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.soundplayer-controls {
+    display: flex;
+    flex-flow: row wrap;
+}

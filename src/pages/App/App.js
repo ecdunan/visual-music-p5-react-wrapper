@@ -1,5 +1,6 @@
 import React from 'react';
 import P5Wrapper from 'react-p5-wrapper';
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import sketch from '../../vendor/sketches/sketch';
 import './App.css';
 
@@ -33,15 +34,20 @@ class App extends React.Component {
     }
 
     render() {
+        const { stateSketch, uploadedSong, volume, isPlaying, buttonText } = this.state;
         return (
-            <div>
-                <P5Wrapper sketch={this.state.stateSketch} volume={this.state.volume} isPlaying={this.state.isPlaying} uploadedSong={this.state.uploadedSong}/>
-                <button onClick={this.onPlayPress}>{this.state.buttonText}</button>
-                <br/>
-                <label>Volume</label>
-                <input type="range" name="volume" value={this.state.volume}  min="0.0"  max="1.0" step="0.1" onChange={this.onVolumeChange}/>
-                <br/>
-                <input type="file" name="file" onChange={this.onFileUpload}/>
+            <div className='visualmusic'>
+                <P5Wrapper sketch = {stateSketch}
+                    volume = {volume}
+                    isPlaying = {isPlaying}
+                    uploadedSong = {uploadedSong}/>
+                <SoundPlayer
+                    volume = {volume}
+                    buttonText = {buttonText}
+                    onPlayPress = {this.onPlayPress}
+                    onVolumeChange = {this.onVolumeChange}
+                    onFileUpload = {this.onFileUpload}
+                />
             </div>
         );
     }
