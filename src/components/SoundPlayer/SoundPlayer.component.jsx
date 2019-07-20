@@ -31,7 +31,10 @@ const SoundPlayer = ({ volume, onPlayPress, onVolumeChange, onFileUpload, button
         <input type="file" name="file" onChange={onFileUpload}/>
         <div className='soundplayer-controls'>
             <div>
-                <button onClick={onPlayPress}>{buttonText}</button>
+                <button className='control-button'
+                    onClick={onPlayPress}>
+                    {buttonText}
+                </button>
             </div>
             <div>
                 <label>Volume</label>
